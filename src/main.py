@@ -1,5 +1,5 @@
 class Product:
-    """Класс, представляющий товар"""
+    """Класc представляющий товар"""
 
     def __init__(self, name: str, description: str, price: float, quantity: int):
         """Инициализация объекта Product"""
@@ -10,7 +10,7 @@ class Product:
 
 
 class Category:
-    """Класс, представляющий категорию товаров"""
+    """Класс представляющий категорию товаров"""
 
     category_count = 0
     product_count = 0
@@ -23,7 +23,6 @@ class Category:
 
         Category.category_count += 1
         Category.product_count += len(products)
-
 
 # if __name__ == "__main__":
 #     product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
