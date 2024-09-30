@@ -35,18 +35,18 @@ class Category:
     def __init__(self, name, description, products=None):
         self.name = name
         self.description = description
-        self._products = products if products is not None else []
-        Category.product_count += len(self._products)
+        self.__products = products if products is not None else []
+        Category.product_count += len(self.__products)
 
     @property
     def products(self):
         result = ""
-        for product in self._products:
+        for product in self.__products:
             result += f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n"
         return result
 
     def add_product(self, product):
-        self._products.append(product)
+        self.__products.append(product)
         Category.product_count += 1
 
 
