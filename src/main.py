@@ -2,17 +2,17 @@ class Product:
     def __init__(self, name, description, price, quantity):
         self.name = name
         self.description = description
-        self._price = price
+        self.__price = price
         self.quantity = quantity
 
     @property
     def price(self):
-        return self._price
+        return self.__price
 
     @price.setter
     def price(self, new_price):
         if new_price > 0:
-            self._price = new_price
+            self.__price = new_price
         else:
             print("Цена не должна быть нулевая или отрицательная")
 
