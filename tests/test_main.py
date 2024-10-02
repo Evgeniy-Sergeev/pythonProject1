@@ -9,7 +9,6 @@ def product() -> Any:
     return product1
 
 
-
 def test_product_init(product) -> Any:
     assert product.name == "Samsung Galaxy S23 Ultra"
     assert product.description == "256GB, Серый цвет, 200MP камера"
