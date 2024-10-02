@@ -20,14 +20,15 @@ def test_product_init(product) -> Any:
 def category() -> Any:
     product4 = Product("55\" QLED 4K", "Фоновая подсветка", 123000.0, 7)
     category2 = Category("Телевизоры",
-                         "Современный телевизор, который позволяет наслаждаться просмотром, станет вашим другом и помощником",
+                         "Современный телевизор, который позволяет"
+                         "наслаждаться просмотром, станет вашим другом и помощником",
                          [product4])
     return category2
 
 
 def test_category_init(category):
     assert category.name == "Телевизоры"
-    assert category.description == "Современный телевизор, который позволяет наслаждаться просмотром, станет вашим другом и помощником"
+    assert category.description == ("Современный телевизор, который позволяет наслаждаться просмотром, станет вашим другом и помощником")
 
 
 def test_product_creation():
@@ -78,3 +79,35 @@ def test_category_creation():
         "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт.\n"
         "Iphone 15, 210000.0 руб. Остаток: 8 шт.\n"
     )
+
+
+@pytest.fixture
+def product1():
+    return Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
+
+
+@pytest.fixture
+def product2():
+    return Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
+
+
+@pytest.fixture
+def product3():
+    return Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14)
+
+
+def test_product_str(product1):
+    assert str(product1) == "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт."
+
+
+def test_category_str(product1, product2, product3):
+    category = Category("Смартфоны", "Описание", [product1, product2, product3])
+    assert str(category) == "Смартфоны, количество продуктов: 27 шт."
+
+
+def test_product_add(product1, product2):
+    assert product1 + product2 == 180000.0 * 5 + 210000.0 * 8
+
+
+def test_product_add_different_quantity(product1, product3):
+    assert product1 + product3 == 180000.0 * 5 + 31000.0 * 14
