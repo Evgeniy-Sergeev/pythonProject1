@@ -45,6 +45,7 @@ class Category:
             result += f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n"
         return result
 
+
     def add_product(self, product):
         self._products.append(product)
         Category.product_count += 1
