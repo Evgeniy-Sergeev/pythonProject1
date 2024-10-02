@@ -38,6 +38,9 @@ class Category:
         self._products = products if products is not None else []
         Category.product_count += len(self._products)
 
+
+
+
     @property
     def products(self):
         result = ""
